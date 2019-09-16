@@ -30,7 +30,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
         public void LoadListProdutos()
         {
             // Caso a Lista de produtos esteva cheia 
-            if (ProdutosList.Count !=0)
+            if (ProdutosList.Count != 0)
             {
                 // limpa a Lista para carrega Os mesmo dados Novamente 
                 ProdutosList.Clear();
@@ -88,7 +88,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
 
             // Ordenando a Lista Por Ordem Numerica cresente 
             ProdutosList = ProdutosList.OrderBy(x => x.cod).ToList();
-            
+
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
                 Console.WriteLine(x);
                 // indo para um Metodo Privado
                 // Passando x e Cogido como parametros
-                QunatidadeStoque(x,Codigo);
+                QunatidadeStoque(x, Codigo);
             }
         }
 
@@ -146,7 +146,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
             // saida de dados 
             Console.WriteLine("Digite a Quantidade que deseja Compra:");
             // entrada de dados (    QUANTIDADE   )
-             int quantidade = int.Parse(Console.ReadLine());
+            int quantidade = int.Parse(Console.ReadLine());
             // criando uma variavel de StoqueUser  para Filtro
             StoqueUser _stokeIten = new StoqueUser();
             //_stokeIten vai consultar o se ja tem o item na lista pelo codigo
@@ -156,11 +156,11 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
             if (_stokeIten == null)
             {
                 // Conta Matematica Valor total = Valor X quantidade 
-             valor_total = x.Valor * quantidade;
-              // saida de dados 
-            Console.WriteLine("Valor Total da Compra  é " + valor_total + " R$");
+                valor_total = x.Valor * quantidade;
                 // saida de dados 
-            Console.WriteLine("Confrimar a Compra 1/ sim ou  2/ não");
+                Console.WriteLine("Valor Total da Compra  é " + valor_total + " R$");
+                // saida de dados 
+                Console.WriteLine("Confrimar a Compra 1/ sim ou  2/ não");
                 // Entrada de dados  de dados ( VALID )
                 int valid = int.Parse(Console.ReadLine());
                 Console.WriteLine("Digite Qualque tecla para seguir ");
@@ -197,7 +197,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
                     // Saida de dados 
                     Console.WriteLine(" Digite qualque tecla para reniciar ");
                     Console.ReadKey();
-                   // Validadeted();
+                    // Validadeted();
                 }
             }
             // caso  ja Stk exista com o mesmo codigo para não adicionar dois itens com mesmo codigo  
@@ -256,13 +256,13 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
         }
         // Quando no Menu Digitar Numero 1 caira no Validadeted
         public void Validadeted()
-        {  
+        {
             // Limpando o Console 
             Console.Clear();
             // Saida de dados
             Console.WriteLine("Deseja add um novo no stoque 1/ sim ou  2/ não");
             // entrada de dados (VALID)
-            int valid = int.Parse( Console.ReadLine());
+            int valid = int.Parse(Console.ReadLine());
             // SE valid for 1
             if (valid == 1)
             {
@@ -271,7 +271,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
                 // ira para Metedo Linha 97
                 addStoqueList();
             }
-            else if (valid ==2)
+            else if (valid == 2)
             {
                 // termina o Loop e volta para menu
                 IsOpen = false;
@@ -306,7 +306,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
                 // entrada de dados para Consulta
                 int Codigo = int.Parse(Console.ReadLine());
                 // Criando outra objeto de Stoque User para Colsultado
-                StoqueUser  stk = new StoqueUser();
+                StoqueUser stk = new StoqueUser();
                 // Verificando se tem Item com o mesmo codigo na lista de Stoque List
                 stk = StoqueList.FirstOrDefault(c => c.cod.Equals(Codigo));
                 if (stk == null)
@@ -321,7 +321,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
                     Console.WriteLine("Tente Novamente, Aperte Qualquer Tecla para Continuar ");
                     Console.ReadKey();
                     #endregion
-                     // Voltar para Metodo da linha 288
+                    // Voltar para Metodo da linha 288
                     ConsumoStoqueList();
                 }
                 // Caso Stk nao sena nulo
@@ -335,7 +335,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
                 // entrada de dados (   QUANTIDADE BEBIDA)
                 int quantidade_bebida = int.Parse(Console.ReadLine());
                 // Se no Stoque Tive Menos que a quantidade bebida 
-                if (stk.Quantidade< quantidade_bebida)
+                if (stk.Quantidade < quantidade_bebida)
                 {
                     // saida de Dados
                     Console.WriteLine("Impossivel Beber mais que quantidade stoque do usuario ");
@@ -343,7 +343,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
                     IsConsumindoStoke();
                 }
                 #region Conta Matematica
-                
+
                 var QuantidadeTotalStoque = stk.Quantidade - quantidade_bebida;
                 var ValorCredito = stk.Valor * QuantidadeTotalStoque;
                 // Um Novo Item para Para Update
@@ -351,6 +351,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
                 {
                     Cerveja_Name = stk.Cerveja_Name,
                     cod = stk.cod,
+                    Valor = stk.Valor,
                     Quantidade = QuantidadeTotalStoque,
                     ValorTotal_Stoque = ValorCredito,
                 };
@@ -364,7 +365,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
             }
             Console.WriteLine("Digite Qualquer Teclar");
             Console.ReadKey();
-            }
+        }
 
         // sera usado quando no menu do programa o user digitar 3
         public void IsConsumindoStoke()
@@ -419,7 +420,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
             {
                 // saida de Dados
                 Console.WriteLine(item);
-             
+
             }
             // Quebra Linha
             Console.WriteLine();
@@ -428,5 +429,5 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
             Console.ReadKey();
         }
     }
- }
+}
 
