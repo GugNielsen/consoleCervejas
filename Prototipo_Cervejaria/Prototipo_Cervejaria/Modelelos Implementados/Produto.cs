@@ -7,7 +7,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
     {
         #region Propriedades  de  produtos 
         public int Cod { get; set; }
-        public string Cerveja_Name { get; set; }
+        public string CervejaName { get; set; }
         public double Valor { get; set; }
         #endregion
 
@@ -27,7 +27,7 @@ namespace Prototipo_Cervejaria.ModelelosImplementados
        public override string ToString()
         {
             return ("Código: " + Cod + "\r\n"
-                + "Cerveja: " + Cerveja_Name + "\r\n"+
+                + "Cerveja: " + CervejaName + "\r\n"+
                 "Valor : " + Valor + "\r\n"+ "------------------------------"); 
         } 
     }
